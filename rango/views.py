@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 
 from django.http import HttpResponse
-from rango.models import Category
+from rango.models import Category, UserComment, UserProfile
 from rango.models import Page
 from rango.forms import CategoryForm
 from rango.forms import PageForm
@@ -51,13 +52,30 @@ def show_category(request, category_name_slug):
         category = Category.objects.get(slug=category_name_slug)
         pages = Page.objects.filter(category=category)
 
+        # pass the data of comments about this category
+        comments = UserComment.objects.filter(category=category)
+        context_dict['comments'] = comments
+
         context_dict['pages'] = pages
         context_dict['category'] = category
+
     except Category.DoesNotExist:
         context_dict['pages'] = None
         context_dict['category'] = None
     
     return render(request, 'rango/category.html', context=context_dict)
+
+def add_comment(request):
+    # get information from request.POST
+    content = request.POST.get('content')
+    user = UserProfile.objects.filter(user_id=request.POST.get('user_id'))[0]
+    category = Category.objects.filter(id=request.POST.get('category_id'))[0]
+    ob = UserComment(content=content, user=user, category=category)
+    # update to database
+    ob.save()
+    # reload current page
+    return redirect('/rango/category/'+category.name.lower())
+
 
 @login_required
 def add_category(request):

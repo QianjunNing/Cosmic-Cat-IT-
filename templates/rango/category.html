@@ -18,6 +18,22 @@
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endfor %}
     </ul>
+        {% for comment in comments %}
+            <div>
+                content : {{ comment.content }}
+                author: {{ comment.user }}
+            </div>
+        {% endfor %}
+        {% if user.is_authenticated %}
+            <form id="comment_form" method="post" action="{% url 'rango:comment' %}">
+            {% csrf_token %}
+                <input type="text" name="content" />
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <input type="hidden" name="category_id" value="{{ category.id }}">
+
+            <input type="submit" name="submit" value="submit" />
+            </form>
+        {% endif %}
     {% else %}
     <strong>No pages currently in category.</strong>
     {% endif %}
