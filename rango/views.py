@@ -13,6 +13,8 @@ from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from rango.webhose_search import run_query
+
 # def index(request):
 #     return HttpResponse("Rango says hey there partner! <br/> <a href='/rango/about/'>About</a>")
 
@@ -183,3 +185,36 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     
     request.session['visits'] = visits
+
+def search(request):
+    result_list = []
+    query = ''
+
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+
+        if query:
+            result_list = run_query(query)
+    
+    return render(request, 'rango/search.html', {'result_list': result_list, 'query': query})
+
+def search_category(request):
+    result_list = ''
+    search_category = ''
+    indexs = 0
+    if request.method == 'POST':
+        search_category = request.POST['search_category'].strip()
+
+        if search_category:
+            result_list = Category.objects.filter(slug=search_category)
+
+
+    
+
+    context_dict = {}
+    context_dict['categories'] = result_list
+   
+    visitor_cookie_handler(request)
+    
+    response = render(request, 'rango/search_category.html', context=context_dict)
+    return response

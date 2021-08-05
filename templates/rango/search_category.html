@@ -1,0 +1,38 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Search
+{% endblock %}
+
+{% block body_block %}
+<div>
+    <h2> Search</h2>
+    <div>
+
+
+        <form id="category_form" method="post" action="/rango/search_category/">
+            {% csrf_token %}
+
+        <input type="text" size="50" name="search_category" id="search_category" value="Search Category" />
+        
+
+        <button type="submit" name="submit">Search</button>
+          
+            
+        </form>
+</div>
+{% if categories %}
+    <h2> Results</h2>
+    <ul>
+    {% for category in categories %}
+                <!-- <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li> -->
+        <li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <strong>There are no categories present. Yon can try to search here <li><a href="{% url 'rango:search' %}">Search</a></li> </strong>
+
+{% endif %}
+</div>
+{% endblock %}
