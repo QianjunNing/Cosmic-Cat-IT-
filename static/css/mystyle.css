@@ -1,0 +1,66 @@
+#box1 {
+    height:auto;
+    width:100%;
+    background-color:#E0E0E0;
+    text-align:left;
+    padding: 10px
+    
+}
+
+
+input {
+    width:600px;
+    height:25px;
+    margin-top:10px;
+    margin-left: 100px;
+}
+
+
+img {
+    float: left;
+    width: 100px;
+    height:40px;
+}
+
+#footer {
+    height:50px;
+    background-color:#E0E0E0;
+    width: 100%;
+    padding: 10px
+}
+
+
+
+#logo{float:left
+
+}
+#search{float:center
+
+}
+#login{
+    float:right
+
+}
+#home{
+    width: 40px;
+    height:40px;
+
+}
+
+#top {
+    font-size:20px;
+}
+
+#userinfo{
+    float:right;
+    /* padding: 20px; */
+    /* border: 1px solid gray; */
+    background-color:#E0E0E0;
+    
+}
+#add{
+    float:left;
+    /* padding: 20px; */
+    
+    background-color:#E0E0E0;
+}
