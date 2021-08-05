@@ -208,9 +208,6 @@ def search_category(request):
         if search_category:
             result_list = Category.objects.filter(slug=search_category)
 
-
-    
-
     context_dict = {}
     context_dict['categories'] = result_list
    

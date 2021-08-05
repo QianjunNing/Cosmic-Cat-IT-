@@ -26,9 +26,12 @@
     <h2> Results</h2>
     <ul>
     {% for category in categories %}
-                <!-- <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li> -->
+               
         <li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
     {% endfor %}
+    </ul>
+    <ul>
+        <strong>There are no categories you are searching. Yon can try to search here <li><a href="{% url 'rango:search' %}">Search</a></li> </strong>
     </ul>
     {% else %}
         <strong>There are no categories present. Yon can try to search here <li><a href="{% url 'rango:search' %}">Search</a></li> </strong>
