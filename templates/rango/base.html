@@ -3,92 +3,91 @@
 {% load rango_template_tags %}
 
 <html>
-   <head lang="en">
-       <meta charset="UTF-8" />
-       <style type="text/css">
-   #box1{
-       height:50px;
-       width:1200px;
-       background-color:#EEEEEE;
-       text-align:right;
-   }
-
-
-   input{
-       width:600px;
-       margin-top:10px;
-       margin-left: 100px;
-   }
-
-
-   img{
-       float: left;
-       width: 100px;
-       height:40px;
-   }
-
-   #footer{
-        background-color:#EEEEEE;
-        width: 1200px;
-   }
-
-</style>
-       <title>
-           Rango-
-           {% block title_block %}
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+        <title>
+            Rango-
+            {% block title_block %}
                How to Tango with Django!
-           {% endblock %}
-       </title>
-   </head>
+            {% endblock %}
+        </title>
+    </head>
 
-   <body>
+    <body>
 
-       <div id="box1">
-           <a href="{% url 'rango:index' %}"> <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"  /></a></li>
-               <input type="text" placeholder="search category...">
-               <button><i>search</i></button>
+        <div id="box1">
+            <div id = "logo">
+            <!-- <h1>Rango</h1> -->
+            <a href="{% url 'rango:index' %}"> <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"  /></a></li>
+            </div>
+            <div id = search>
+               <!-- <input type="text" placeholder="search category..."> -->
+                <form id="category_form" method="post" action="/rango/search_category/">
+                    {% csrf_token %}
+        
+                <input type="text" size="50" name="search_category" id="search_category" placeholder="search category..." value="" />
+                
+        
+                <button type="submit" name="submit">Search</button>
 
-                   {% if user.is_authenticated %}
-                   {{ user.username }}
+                {% if user.is_authenticated %}
+                <a id = "top">{{ user.username }}</a>
                        |
-                   <a href="{% url 'rango:logout' %}">Logout</a>
+                <a id = "top" href="{% url 'rango:logout' %}">Logout</a>
 
-                   {% else %}
-                   <a href="{% url 'rango:register' %}">Sign Up</a>
-                   |
-                   <a href="{% url 'rango:login' %}">Login</a>
+                {% else %}
+                <a id = "top" href="{% url 'rango:register' %}">Sign Up</a>
+                |
+                <a id = "top" href="{% url 'rango:login' %}">Login</a>
 
-                   {% endif %}
+                {% endif %}
+                </form>
+            </div>       
 
-           </div>
+        </div>
 
 
-       </div>
+      
 
 
    {% block body_block %}
 
    {% endblock %}
-  
+
 
 
    <div id="footer">
-       <ul>
-       {% if user.is_authenticated %}
+        
+        <div>
+        <a href="{% url 'rango:about' %}">About</a> </div>
+        
+        {% if user.is_authenticated %} 
+        <div id = "add">
+       
+           
+        <a href="{% url 'rango:restricted' %}">Restricted Page</a><br>
+        <a href="{% url 'rango:add_category' %}">Add a New Category</a>
+       
+        </div>
+        
+        <div id = "userinfo">
+        
+    
+            
+        <a>{{user.username }}</a><br>
+        
+        <a>{{user.email }}</a><br> 
+        
 
-       <li><a href="{% url 'rango:restricted' %}">Restricted Page</a></li>
-       <li><a href="{% url 'rango:add_category' %}">Add a New Category</a></li>
 
-       {% endif %}
-
-           <li><a href="{% url 'rango:about' %}">About</a></li>
-
-       </ul>
-
-   </div>
-
+        
+        </div>
+        {% endif %}
+   </div> 
+  
+ 
    </body>
 </html>
-
 
 
