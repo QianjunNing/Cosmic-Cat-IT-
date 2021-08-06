@@ -112,7 +112,7 @@ class UsercommentModelTests(TestCase):
         populate()
         content = self.client.get(reverse('rango:show_category',kwargs={'category_name_slug': 'python'})).content.decode()
 
-        self.assertTrue( '<form id="comment_form">'not in content, f"{FAILURE_HEADER}The comment was present on category page when a user is not logged in. This shouldn't be the case! Please check.{FAILURE_FOOTER}")
+        self.assertTrue( '<form id="comment_form">'not in content, f"{FAILURE_HEADER}The comment form was present on category page when a user is not logged in. This shouldn't be the case! Please check.{FAILURE_FOOTER}")
         
         
     
