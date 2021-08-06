@@ -99,7 +99,7 @@ def create_user_object():
 
 class UsercommentModelTests(TestCase):
     """
-    Tests to check whether the Usercomment model has been created according to the specification.
+    Tests to check whether the Usercomment model has been created 
     """
    
     
