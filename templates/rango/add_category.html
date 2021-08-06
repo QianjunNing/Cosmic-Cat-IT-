@@ -2,12 +2,19 @@
 {% load static %}
 
 {% block title_block %}
-    Add a Category
+    Add a New Category
 {% endblock %}
 
 {% block body_block %}
-<h1>Add a Category</h1>
-<div>
+<link rel="stylesheet"  href="{%static 'css/add_category.css' %}" />
+
+<div id = "title">
+    <h1>Add a Category</h1>
+</div>
+
+
+
+<div id = "addbox2">
     <form id="category_form" method="post" action="/rango/add_category/">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}

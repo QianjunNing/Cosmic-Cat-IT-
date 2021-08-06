@@ -1,0 +1,150 @@
+#box1 {
+    height:auto;
+    width:100%;
+    background-color:#444693;
+    text-align:left;
+    padding: 10px
+
+    
+}
+
+#title{
+    background-color:#444693;
+    padding: 20px;
+    color: #ffffff;
+}
+
+#logoimg{
+    float:left;
+    height:60px;
+    width:70px;
+}
+
+input {
+    width:600px;
+    height:25px;
+    margin-top:10px;
+    margin-left: 100px;
+}
+
+
+#footer {
+    height:70px;
+    background-color:#444693;
+    text-align:left;
+    width: 100%;
+    padding: 10px
+}
+
+
+
+#search{float:center
+
+}
+#login{
+    float:right
+
+}
+
+
+#top {
+    color:white;
+    font-size:20px;
+}
+#top:link{
+    color:#ffffff;
+    text-decoration: none;
+}
+#top:visited{
+    color:#ffffff;
+    text-decoration: none;
+}
+#top:active{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+
+
+
+#userinfo{
+    float:right;
+    /* padding: 20px; */
+    /* border: 1px solid gray; */
+    background-color:#444693;
+    ;
+    
+}
+#add{
+    float:left;
+    /* padding: 20px; */
+    
+    background-color:#444693;
+}
+
+#searchbutton{
+     
+        background-color: #ffffff;  
+        border-color: #ffffff;  
+        color: #0d0d0e;  
+        
+}
+
+
+
+
+#main_div{  
+    width:100%;  
+    height:400px;  
+    
+}  
+/*取消小圆点*/  
+#main_div li{  
+    list-style:none;  
+}  
+#main_div_img {  
+	margin:0; 
+	padding: 0px;
+}  
+ 
+#main_div_img li{  
+    display:none; 
+	margin:0; 
+	padding: 0px;
+}  
+ 
+/*角落显示数字的ul*/  
+#main_div_num{  
+    overflow:hidden;  
+    position:absolute;  
+    bottom:10px;  
+    right:10px;  
+    color:#FFF;  
+}  
+/*数字的浮动*/  
+#main_div_num li{  
+    border:#FFF solid 1px;  
+    float:left;  
+    margin:0px 5px;  
+    padding:3px 10px;  
+}  
+.numsover{  
+    background-color:#a5a8eb;  
+    color:#444693;  
+}  
+ 
+.numsout{} 
+
+
+a:link{
+ 
+    text-decoration: none;
+}
+a:visited{
+    
+    text-decoration: none;
+}
+a:active{
+   
+    text-decoration: none;
+}

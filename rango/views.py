@@ -14,6 +14,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from rango.webhose_search import run_query
+from rango.models import Category, UserComment, UserProfile
 
 # def index(request):
 #     return HttpResponse("Rango says hey there partner! <br/> <a href='/rango/about/'>About</a>")
@@ -187,6 +188,7 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 def search(request):
+    """use search API to search"""
     result_list = []
     query = ''
 
@@ -199,6 +201,7 @@ def search(request):
     return render(request, 'rango/search.html', {'result_list': result_list, 'query': query})
 
 def search_category(request):
+    """search category in the current database """
     result_list = ''
     search_category = ''
     indexs = 0
@@ -215,3 +218,39 @@ def search_category(request):
     
     response = render(request, 'rango/search_category.html', context=context_dict)
     return response
+
+def view_all(request):
+    """view all categories"""
+    response = render(request, 'rango/view_all.html')
+    return response
+
+def add_comment(request):
+    # get information from request.POST
+    content = request.POST.get('content')
+    user = UserProfile.objects.filter(user_id=request.POST.get('user_id'))[0]
+    category = Category.objects.filter(id=request.POST.get('category_id'))[0]
+    ob = UserComment(content=content, user=user, category=category)
+    # update to database
+    ob.save()
+    # reload current page
+    return redirect('/rango/category/'+category.slug.lower())
+
+def show_category(request, category_name_slug):
+    context_dict = {}
+
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        pages = Page.objects.filter(category=category)
+
+        # pass the data of comments about this category
+        comments = UserComment.objects.filter(category=category)
+        context_dict['comments'] = comments
+
+        context_dict['pages'] = pages
+        context_dict['category'] = category
+
+    except Category.DoesNotExist:
+        context_dict['pages'] = None
+        context_dict['category'] = None
+    
+    return render(request, 'rango/category.html', context=context_dict)

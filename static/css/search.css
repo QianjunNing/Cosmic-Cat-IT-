@@ -1,0 +1,39 @@
+
+/* #searchc{
+    background-color:#444693;
+    padding: 20px;
+    color: #ffffff;
+
+
+} */
+#searchpage{
+    background-color:#ffffff;
+    padding: 20px;
+    margin: 20px;
+    
+
+}
+
+#allcategories{
+    margin: 20px;
+    padding: 20px;
+    
+}
+
+#itemhead{
+    background-color: #a5a8eb;
+    color: cornsilk;
+}
+
+#itemheadlink:link{
+    color:white;
+    text-decoration: none;
+}
+#itemheadlink:visited{
+    color:white;
+    text-decoration: none;
+}
+#itemheadlink:active{
+    color:white;
+    text-decoration: none;
+}

@@ -12,5 +12,7 @@ urlpatterns = [
     path('restricted/', views.restricted, name='restricted'),
     path('logout/', views.user_logout, name='logout'),
     path('search/', views.search, name='search'),
-    path('search_category/',views.search_category, name='search_category')
+    path('search_category/',views.search_category, name='search_category'),
+    path('view_all/',views.view_all, name='view_all'),
+    path('comment/', views.add_comment, name='comment')
 ]

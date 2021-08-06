@@ -38,5 +38,13 @@ class UserProfile(models.Model):
     picture = models.ImageField(upload_to='profile_images', blank=True)
     def __str__(self):
         return self.user.username
+        
+# add a new model for comments
+class UserComment(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    content = models.CharField(max_length=256)
+    def __str__(self):
+        return self.content
        
        

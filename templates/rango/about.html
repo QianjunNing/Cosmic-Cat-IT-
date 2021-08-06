@@ -2,17 +2,35 @@
 {% load static %}
 {% block title_block %}
     About Rango
+
+<link rel="stylesheet"  href="{%static 'css/about.css' %}" />
 {% endblock %}
 {% block body_block %}
-    <h1>Rango says...</h1>
-    <div>
-        here is the about page. <br />
-        This tutorial has been put together by Qianjun Ning. </br>
-        <p>Visits: {{ visits }}</p>
-    </div>
+<div id="title">
+    <h2>About us</h2></div>
+ 
+<table id="content">
+    <tr>
+        <td  id = "aboutpicture">
+            
+        <img src="{{ MEDIA_URL }}cat1.jpg" alt="Picture of a Cat" />
 
-    <div>
-        <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
+        </td>
+        <td id="aboutus">
+            here is COSMIC CAT. <br />
+            Our team members:</br>
+
+        </td>
+    </tr></table>
+<!-- <div> 
+    <div id="aboutus">
+        here is COMIS CAT. <br />
+        Our team member:</br>
+        
+    </div> -->
+
+    <!-- <div id = "aboutpicture">
         <img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Cat" />
     </div>
+</div> -->
 {% endblock %}   

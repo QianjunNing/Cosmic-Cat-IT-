@@ -1,0 +1,24 @@
+{% extends 'rango/base.html' %}
+{% load static %}
+{% load rango_template_tags %}
+
+{% block title_block %}
+View all categories
+{% endblock %}
+
+{% block body_block %}
+<link rel="stylesheet"  href="{%static 'css/viewall.css' %}" />
+<div id="title">
+
+
+<h2>View all categories</h2>
+</div>
+<div id = "allcategories"></div>
+<!-- {% block sidebar_block %} -->
+<a id="liststyle">
+{% get_category_list category %}
+<!-- {% endblock %} --></a>
+</div>
+{% endblock %}
+
+

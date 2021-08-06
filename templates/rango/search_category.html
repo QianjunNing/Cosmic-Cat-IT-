@@ -6,22 +6,12 @@
 {% endblock %}
 
 {% block body_block %}
-<div>
-    <h2> Search</h2>
-    <div>
-
-
-        <form id="category_form" method="post" action="/rango/search_category/">
-            {% csrf_token %}
-
-        <input type="text" size="50" name="search_category" id="search_category" value="Search Category" />
-        
-
-        <button type="submit" name="submit">Search</button>
-          
-            
-        </form>
-</div>
+<link rel="stylesheet"  href="{%static 'css/search.css' %}" />
+<div id="title">
+    <h2> Search Category </h2>
+    </div>
+<div id ="searchpage">
+    
 {% if categories %}
     <h2> Results</h2>
     <ul>
@@ -31,10 +21,10 @@
     {% endfor %}
     </ul>
     <ul>
-        <strong>There are no categories that you are searching. Yon can try to search here <li><a href="{% url 'rango:search' %}">Search</a></li> </strong>
+        <strong>There are no categories that you are searching. Yon can try to search here <a href="{% url 'rango:search' %}">Search</a></strong>
     </ul>
     {% else %}
-        <strong>There are no categories present. Yon can try to search here <li><a href="{% url 'rango:search' %}">Search</a></li> </strong>
+        <strong>There are no categories present. Yon can try to search here <a href="{% url 'rango:search' %}">Search</a> </strong>
 
 {% endif %}
 </div>

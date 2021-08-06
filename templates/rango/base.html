@@ -5,45 +5,128 @@
 <html>
     <head lang="en">
         <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+        <link rel="stylesheet"  href="{%static 'css/categorying.css' %}" />
+
         <title>
             Rango-
             {% block title_block %}
-                How to Tango with Django!
+               How to Tango with Django!
             {% endblock %}
         </title>
     </head>
+
     <body>
-    <div>
-    {% block body_block %}
-    {% endblock %}
-    </div>
-    <div>
-        {% block sidebar_block %}
-            {% get_category_list category %}
-        {% endblock %}
-    </div>
-    <hr />
-    <div>
-        <ul>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'rango:restricted' %}">Restricted Page</a></li>
-            <li><a href="{% url 'rango:logout' %}">Logout</a></li> 
-            <li><a href="{% url 'rango:add_category' %}">Add a New Category</a></li>
+
+        <div id="box1">
+            <div id = "logo">
+                <!-- <h1>Rango</h1> -->
+                <a href="{% url 'rango:index' %}"> <img id="logoimg" src="{% static 'images/logo.png' %}" alt="logo"  /></a>
+               
+    
+            </div>
+             
+                <div id = search>
+                   
+    
+                    <form id="category_form" method="post" action="/rango/search_category/">
+                        {% csrf_token %}
             
-        {% else %}
-            <li><a href="{% url 'rango:register' %}">Sign Up</a></li>
-            <li><a href="{% url 'rango:login' %}">Login</a></li>   
-        
-        {% endif %}        
+                    <input type="text" size="50" name="search_category" id="search_category" placeholder="search category..." value="" />
+                    
+            
+                    <button id ="searchbutton" type="submit" name="submit">Search</button>
+
+                {% if user.is_authenticated %}
+               
+                <a id = "top">{{ user.username }}</a>
+                       |
+                <a id = "top" href="{% url 'rango:logout' %}">Logout</a>
+
+                {% else %}
+                <a id = "top" href="{% url 'rango:register' %}">Sign Up</a>
+                |
+                <a id = "top" href="{% url 'rango:login' %}">Login</a>
+
+                {% endif %}
+                </form>
+            </div> 
+
+
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static "js/index.js" %}"></script>
+
+        <script>
+        $(document).ready(function function_name() {
+                imageAutoChange()
+            })
+       </script>
+
+ 
+
+    <div id="main_div">
+    	
+        <ul id="main_div_img" >
+       		
+            <li><img src="{% static 'images/bg.jpg' %}" width="100%" height="400" /></li>
+            <li><img src="{% static 'images/bg2.jpg' %}" width="100%" height="400" /></li>
+            <li><img src="{% static 'images/bg3.jpg' %}" width="100%" height="400" /></li>
+            
+        </ul>
+ 
+        <ul id="main_div_num">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
            
-            <li><a href="{% url 'rango:about' %}">About</a></li>
-            <li><a href="{% url 'rango:index' %}">Index</a></li>
-            <li><a href="{% url 'rango:search_category' %}">Search Category</a></li>
-            
-            
-            
         </ul>
     </div>
 
-    </body>  
+       
+
+
+      
+
+
+   {% block body_block %}
+
+   {% endblock %}
+
+
+
+   <div id="footer">
+        
+        <div>
+        <a id = "top" href="{% url 'rango:about' %}">About</a> </div>
+        
+        {% if user.is_authenticated %} 
+        <div id = "add">
+       
+           
+        <a id ="top" href="{% url 'rango:restricted' %}">Restricted Page</a><br>
+        <a id = "top" href="{% url 'rango:add_category' %}">Add a New Category</a>
+       
+        </div>
+        
+        <div id = "userinfo">
+        
+    
+            
+        <a  id ="top">{{user.username }}</a><br>
+        
+        <a  id ="top">{{user.email }}</a><br> 
+        
+
+
+        
+        </div>
+        {% endif %}
+   </div> 
+  
+ 
+   </body>
 </html>
+
+

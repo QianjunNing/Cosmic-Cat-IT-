@@ -1,0 +1,23 @@
+.comments{
+    width:40%;
+    background-color: #cdffe8;
+    margin: 12px;
+    margin-left:7%;
+}
+
+#comment_content{
+    background-color: #eeeeee;
+    height:400%;
+    width:40%;
+    margin-top:4%;
+    margin-left:7%;
+    margin-bottom: 7%;
+    font-size:35px;
+    border-style: solid;
+    overflow: visible;
+
+}
+#comment_submit_button{
+    background-color: #4CAF50;
+    font-size: 18px;
+}
