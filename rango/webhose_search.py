@@ -1,7 +1,7 @@
 import json
 import requests
-import urllib.parse # Py3
-import urllib.request # Py
+import urllib.parse 
+import urllib.request
 
 #read the Webhose API key
 def read_webhose_key():

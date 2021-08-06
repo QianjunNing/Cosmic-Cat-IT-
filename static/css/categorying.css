@@ -12,7 +12,7 @@
     margin-top:4%;
     margin-left:7%;
     margin-bottom: 7%;
-    font-size:35px;
+    font-size:15px;
     border-style: solid;
     overflow: visible;
 
@@ -20,4 +20,5 @@
 #comment_submit_button{
     background-color: #4CAF50;
     font-size: 18px;
+    width:80px
 }
